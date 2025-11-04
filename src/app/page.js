@@ -21,7 +21,6 @@ export default function Home() {
       if (!isHovered && container) {
         container.scrollLeft += speed;
 
-        // Reset when we've scrolled through one full set
         if (container.scrollLeft >= container.scrollWidth / 2) {
           container.scrollLeft = 0;
         }
@@ -113,7 +112,7 @@ export default function Home() {
       </div>
 
 
-      <div className="flex w-11/12 max-w-9/12 mt-10 space-x-6 h-[600px]">
+      <div className="flex w-11/12 max-w-9/12 mt-20 space-x-6 h-[600px]">
         <Link href={`/product/${6}`} className="group relative flex-2 rounded-md bg-black flex justify-center items-center overflow-hidden hover:cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out">
           <img
             src="/t-shirt-1.avif"
@@ -160,7 +159,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative w-full flex justify-center mt-12 overflow-hidden ">
+      <div className="relative w-full flex justify-center mt-20 overflow-hidden ">
         <div className="pointer-events-none absolute left-0 top-0 h-full w-32  from-neutral-900 to-transparent z-10" />
         <div className="pointer-events-none absolute right-0 top-0 h-full w-32  from-neutral-900 to-transparent z-10" />
 
@@ -191,7 +190,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="w-full bg-neutral-950 text-neutral-400 mt-16 py-10 border-t border-neutral-800">
+      <footer className="w-full bg-neutral-950 text-neutral-400 mt-20 py-10 border-t border-neutral-800 h-85">
         <div className="max-w-9/12 mx-auto flex justify-between px-10">
           <div className="flex items-start space-x-3">
             <div className="h-10 w-10 border rounded-md flex justify-center items-center bg-black">
@@ -231,3 +230,4 @@ export default function Home() {
     </div>
   );
 }
+
