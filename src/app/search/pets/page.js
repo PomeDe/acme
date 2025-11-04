@@ -81,22 +81,23 @@ export default function Home() {
                 </div>
             </div>
         </div>
-        <div className="flex flex-row justify-center space-x-25  w-full">
+       <div className="flex flex-row justify-center space-x-25  w-full">
             <div className="flex flex-col">
                 <h3 className=" text-xs text-neutral-500 md:block dark:text-neutral-400">Collections</h3>
                 <ul className=" md:block">
- <li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100" href="/search">All</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/bags">Bags</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/drinkware">Drinkware</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/electronics">Electronics</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/footwear">Footwear</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/headwear">Headwear</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/hoodies">Hoodies</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/jackets">Jackets</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/kids">Kids</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 underline" href="/search/pets">Pets</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/shirts">Shirts</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/stickers">Stickers</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 underline" href="/search">All</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/bags">Bags</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/drinkware">Drinkware</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/electronics">Electronics</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/footwear">Footwear</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/headwear">Headwear</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/hoodies">Hoodies</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/jackets">Jackets</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/kids">Kids</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/pets">Pets</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/shirts">Shirts</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search/stickers">Stickers</a></li>
+
 
                 </ul>
                
@@ -106,7 +107,7 @@ export default function Home() {
                           <Link
                      href={`/product/${element.id}`}
               key={element.id}
-              className="group relative bg-black rounded-md shrink-0 w-100 h-90 flex justify-center items-center overflow-hidden cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out"
+              className="group relative bg-black rounded-md shrink-0 w-90 h-80 flex justify-center items-center overflow-hidden cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out"
             >
               <img
                 src={element.image}
@@ -125,11 +126,11 @@ export default function Home() {
  <div className=" flex flex-col">
                 <h3 className=" text-xs text-neutral-500 md:block dark:text-neutral-400">Sort by</h3>
                 <ul className=" md:block">
- <li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 underline" href="/search">Relevance</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Trending</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Latest Arrivals</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Price: Low to High</a></li>
-<li className="mt-2 flex text-black dark:text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Price: High to Low</a></li>
+ <li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 underline" href="/search">Relevance</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Trending</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Latest Arrivals</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Price: Low to High</a></li>
+<li className="mt-2 flex text-white"><a className="w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 " href="/search">Price: High to Low</a></li>
 
                 </ul>
                
