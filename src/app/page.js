@@ -43,6 +43,9 @@ export default function Home() {
   return (
     <div className={`w-full flex flex-col items-center bg-neutral-900 text-white `}>
       <div className="flex justify-between items-center h-20 w-11/12">
+      <div className="lg:hidden  h-10 w-10 border rounded-md flex justify-center items-center bg-black">
+  <img src="https://img.icons8.com/ios7/512/FFFFFF/menu--v3.png"/>
+            </div>
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-3">
             <div className="h-10 w-10 border rounded-md flex justify-center items-center bg-black">
@@ -56,17 +59,17 @@ export default function Home() {
                 <path d="M26.2381 17.9167L20.7382 28H32L26.2381 17.9167Z"></path>
               </svg>
             </div>
-            <p className="font-semibold text-white">ACME STORE</p>
+            <Link href="/" className="font-semibold text-white">ACME STORE</Link>
           </div>
 
-          <div className="flex space-x-4 text-neutral-400">
+          <div className=" sm:hidden  lg:flex space-x-4 text-neutral-400">
                     <Link href="/search" className="hover:underline">All</Link>
                     <Link href="/search/shirts" className="hover:underline">Shirts</Link>
                     <Link href="/search/stickers"className="hover:underline">Stickers</Link>
           </div>
         </div>
 
-        <div className="flex items-center w-1/3">
+        <div className="sm:hidden lg:flex items-center w-1/3">
           <input
             type="text"
             placeholder="Search for products..."
@@ -112,7 +115,7 @@ export default function Home() {
       </div>
 
 
-      <div className="flex w-11/12 max-w-9/12 mt-20 space-x-6 h-[600px]">
+      <div className="lg:flex sm:gap-10  sm:mx-grid w-11/12 sm:grid-cols-2 md:grid-rows-2 max-w-9/12  mt-20 lg:space-x-6 lg:h-[600px]">
         <Link href={`/product/${6}`} className="group relative flex-2 rounded-md bg-black flex justify-center items-center overflow-hidden hover:cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out">
           <img
             src="/t-shirt-1.avif"
@@ -127,9 +130,9 @@ export default function Home() {
           </div>
         </Link>
 
-        <div className="flex flex-col flex-1 space-y-6">
+        <div className="flex flex-col flex-1 space-y-8">
 
-          <Link href={`/product/${8}`} className="group relative h-1/2 rounded-md bg-black flex justify-center items-center overflow-hidden hover:cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out">
+          <Link href={`/product/${8}`} className="group relative h-1/2 sm:mt-10 rounded-md bg-black flex justify-center items-center overflow-hidden hover:cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out">
             <img
               src="/bag-1-dark (1).avif"
               alt="Acme Drawstring Bag"

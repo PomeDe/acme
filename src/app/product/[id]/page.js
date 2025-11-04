@@ -10,6 +10,7 @@ export default function ProductPage() {
     const [a, setA] = useState(false);
       const [b, setB] = useState(false);
   const [chosen, setChosen] = useState(false);
+  
   useEffect(() => {
   if (a && b) {
     setChosen(true);
@@ -48,6 +49,9 @@ export default function ProductPage() {
   return (
     <div className="w-full flex flex-col items-center bg-neutral-900 text-white">
             <div className="flex justify-between items-center h-20 w-11/12">
+      <div className="lg:hidden  h-10 w-10 border rounded-md flex justify-center items-center bg-black">
+  <img src="https://img.icons8.com/ios7/512/FFFFFF/menu--v3.png"/>
+            </div>
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-3">
             <div className="h-10 w-10 border rounded-md flex justify-center items-center bg-black">
@@ -61,17 +65,17 @@ export default function ProductPage() {
                 <path d="M26.2381 17.9167L20.7382 28H32L26.2381 17.9167Z"></path>
               </svg>
             </div>
-            <Link className="font-semibold text-white"  href="/">ACME STORE</Link>
+            <Link href="/" className="font-semibold text-white">ACME STORE</Link>
           </div>
 
-          <div className="flex space-x-4 text-neutral-400">
+          <div className=" sm:hidden  lg:flex space-x-4 text-neutral-400">
                     <Link href="/search" className="hover:underline">All</Link>
                     <Link href="/search/shirts" className="hover:underline">Shirts</Link>
                     <Link href="/search/stickers"className="hover:underline">Stickers</Link>
           </div>
         </div>
 
-        <div className="flex items-center w-1/3">
+        <div className="sm:hidden lg:flex items-center w-1/3">
           <input
             type="text"
             placeholder="Search for products..."
@@ -120,39 +124,58 @@ export default function ProductPage() {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full object-contain"
+            className="w-1/2 object-contain"
           />
         </div>
-        <div className="h-55 w-1/3 flex flex-col justify-start mt-10 space-y-5 border-b pb-6 dark:border-neutral-700 mr-5">
-          <p className="text-5xl font-bold">{product.name}</p>
+        <div className=" h-42 w-1/3 flex flex-col justify-start mt-10 space-y-5 border-b pb-6 dark:border-neutral-700 mr-5">
+          <p className="sm:text-2xl lg:text-5xl font-bold">{product.name}</p>
           <div className="bg-blue-600 rounded-3xl w-40 py-3 flex items-center justify-center text-md font-semibold mb-5 ">
 
             {product.price}
           </div>
           <p className="text-neutral-400">Category: {product.category}</p>
-          <p className="text-neutral-400">Color: </p>
-          <div>
-          <select onChange={(e)=>{if(e.target.value!=="Choose an option"){setA(true)}else{setA(false)}}} className="bg-neutral-800 border border-neutral-700 rounded-md h-10 px-3 text-white w-50">
-            <option>Choose an option</option>
-            <option>Black</option>
-            <option>White</option>
-            <option>Blue</option>
-            <option>Red</option>
-          </select>
-          </div>
-                    <p className="text-neutral-400">Size: </p>
-          <div>
-          <select onChange={(e)=>{if(e.target.value!=="Choose an option"){setB(true)}else{setB(false)}}} className="bg-neutral-800 border border-neutral-700 rounded-md h-10 px-3 text-white w-50">
-            <option>Choose an option</option>
-            <option>XS</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-          </select>
-          </div>
-          {chosen ?(          <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2 font-semibold mt-4">
+         <p className="text-neutral-400">Color:</p>
+<div className="lg:flex sm:grid sm:grid-cols-2 sm:space-y-2 lg:space-x-2">
+  {["Black","White","Blue"].map((color) => (
+    <label key={color} className="cursor-pointer">
+      <input
+        type="radio"
+        name="color"
+        value={color}
+        className="peer hidden"
+        onChange={() => setA(true)}
+      />
+      <div className="h-8 w-14 rounded-2xl border border-gray-300 
+                      peer-checked:border-blue-500 flex items-center justify-center">
+        {color}
+      </div>
+    </label>
+  ))}
+</div>
+
+<p className="text-neutral-400 lg:mt-4">Size:</p>
+<div className="lg:flex sm:grid sm:grid-cols-2 sm:space-y-2 lg:space-x-2">
+  {["XS","S","M","L"].map((size) => (
+    <label key={size} className="cursor-pointer">
+      <input
+        type="radio"
+        name="size"
+        value={size}
+        className="peer hidden"
+        onChange={() => setB(true)}
+      />
+      <div className="h-8 w-12 rounded-2xl border border-gray-300 
+                      peer-checked:border-blue-500 flex items-center justify-center">
+        {size}
+      </div>
+    </label>
+  ))}
+</div>
+
+
+          {chosen ?(          <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2 font-semibold lg:mt-4">
             Add to Cart
-          </button>):(          <button className="bg-blue-600 opacity-50 text-white rounded-md px-4 py-2 font-semibold mt-4">
+          </button>):(          <button className="bg-blue-600 opacity-50 text-white rounded-md px-4 py-2 font-semibold lg:mt-4">
             Add to Cart
           </button>)}
 
