@@ -7,6 +7,17 @@ export default function ProductPage() {
   const { id } = useParams();
     const [sidebar, setSidebar] = useState(false);
   const [product, setProduct] = useState(null);
+    const [a, setA] = useState(false);
+      const [b, setB] = useState(false);
+  const [chosen, setChosen] = useState(false);
+  useEffect(() => {
+  if (a && b) {
+    setChosen(true);
+  } else {
+    setChosen(false);
+  }
+}, [a, b]);
+
 
   const products = [
     { id: 0, name: "Acme Mug", price: "$10.00 USD", image: "/mug-1.avif", category: "drinkware" },
@@ -34,10 +45,8 @@ export default function ProductPage() {
     setProduct(selectedProduct);
   }, [id]);
 
-  if (!product) return <p className="text-white p-10">Loading...</p>;
-
   return (
-    <div className="w-full flex flex-col items-center bg-neutral-900 text-white h-fit">
+    <div className="w-full flex flex-col items-center bg-neutral-900 text-white">
             <div className="flex justify-between items-center h-20 w-11/12">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-3">
@@ -106,42 +115,121 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <div className="flex w-8/12 mt-10 space-x-6 h-[600px] bg-black rounded-md p-6">
-        <div className="h-full w-2/3 flex justify-center items-center">
+      {product !==null ?(<div className="flex w-8/12 mt-15 space-x-6 bg-black rounded-md p-6 h-150">
+        <div className=" w-2/3 flex justify-center items-center">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-contain"
+            className="w-full object-contain"
           />
         </div>
-        <div className="h-fit w-1/3 flex flex-col justify-start mt-10 space-y-5 border-b pb-6 dark:border-neutral-700 mr-5">
+        <div className="h-55 w-1/3 flex flex-col justify-start mt-10 space-y-5 border-b pb-6 dark:border-neutral-700 mr-5">
           <p className="text-5xl font-bold">{product.name}</p>
           <div className="bg-blue-600 rounded-3xl w-40 py-3 flex items-center justify-center text-md font-semibold mb-5 ">
 
             {product.price}
           </div>
           <p className="text-neutral-400">Category: {product.category}</p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2 font-semibold mt-4">
+          <p className="text-neutral-400">Color: </p>
+          <div>
+          <select onChange={(e)=>{if(e.target.value!=="Choose an option"){setA(true)}else{setA(false)}}} className="bg-neutral-800 border border-neutral-700 rounded-md h-10 px-3 text-white w-50">
+            <option>Choose an option</option>
+            <option>Black</option>
+            <option>White</option>
+            <option>Blue</option>
+            <option>Red</option>
+          </select>
+          </div>
+                    <p className="text-neutral-400">Size: </p>
+          <div>
+          <select onChange={(e)=>{if(e.target.value!=="Choose an option"){setB(true)}else{setB(false)}}} className="bg-neutral-800 border border-neutral-700 rounded-md h-10 px-3 text-white w-50">
+            <option>Choose an option</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          </div>
+          {chosen ?(          <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2 font-semibold mt-4">
             Add to Cart
-          </button>
+          </button>):(          <button className="bg-blue-600 opacity-50 text-white rounded-md px-4 py-2 font-semibold mt-4">
+            Add to Cart
+          </button>)}
+
+        </div>
+      </div>):(<div className="flex w-8/12 mt-10 space-x-6 bg-black rounded-md p-6 h-150">
+      <p>This product does not exist</p>
+      </div>)}
+            <h1 className="mt-20 font-bold text-2xl">Related Products</h1>
+           <div className="relative w-full flex justify-center mt-10 mb-10 overflow-hidden ">
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-32  from-neutral-900 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-32  from-neutral-900 to-transparent z-10" />
+
+        <div
+          className="flex space-x-6 overflow-x-scroll scrollbar max-w-10/12"
+          style={{ scrollbarWidth: "w-full", msOverflowStyle: 'none' }}
+        >
+          {products.map((product, i) => (
+            <Link
+            href={`/product/${i}`}
+              key={i}
+              className="group relative bg-black rounded-md shrink-0 w-80 h-80 flex justify-center items-center overflow-hidden cursor-pointer hover:border-2 hover:border-blue-500 transition duration-300 ease-in-out"
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-1/2 h-2/3 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute bottom-4 left-4 flex items-center space-x-3 bg-black/70 border border-gray-500 rounded-3xl h-10 px-3 text-xs">
+                <p className="font-semibold">{product.name}</p>
+                <div className="bg-blue-600 rounded-3xl px-3 py-1 font-semibold">
+                  {product.price}
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
+      
 
-      <footer className="w-full bg-neutral-950 text-neutral-400 mt-16 py-10 border-t border-neutral-800 h-10">
-        <div className="max-w-9/12 mx-auto flex justify-between px-10"> <div className="flex items-start space-x-3">
-          <div className="h-10 w-10 border rounded-md flex justify-center items-center bg-black">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 28" className="h-4 w-4 fill-white" >
-              <path d="M21.5758 9.75769L16 0L0 28H11.6255L21.5758 9.75769Z"></path> <path d="M26.2381 17.9167L20.7382 28H32L26.2381 17.9167Z"></path>
-            </svg> </div>
-          <div>
-            <p className="font-semibold text-white">ACME STORE</p>
-            <p className="text-xs mt-1"> © 2023–2025 ACME, Inc. All rights reserved. </p>
-          </div> </div> <div className="flex space-x-12 text-sm">
-            <div className="flex flex-col space-y-2"> <p className="font-semibold text-white">Home</p>
-              <Link href="#">About</Link> <Link href="#">Terms & Conditions</Link> <Link href="#">Shipping & Returns</Link>
-              <Link href="#">Privacy Policy</Link> <Link href="#">FAQ</Link> </div> </div>
-        </div> <div className="text-center text-xs text-neutral-600 mt-6"> Created by ▲ Vercel </div>
+ <footer className="w-full bg-neutral-950 text-neutral-400 mt-16 py-10 border-t border-neutral-800 ">
+        <div className="max-w-9/12 mx-auto flex justify-between px-10">
+          <div className="flex items-start space-x-3">
+            <div className="h-10 w-10 border rounded-md flex justify-center items-center bg-black">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 28"
+                className="h-4 w-4 fill-white"
+              >
+                <path d="M21.5758 9.75769L16 0L0 28H11.6255L21.5758 9.75769Z"></path>
+                <path d="M26.2381 17.9167L20.7382 28H32L26.2381 17.9167Z"></path>
+              </svg>
+            </div>
+            <div>
+              <p className="font-semibold text-white">ACME STORE</p>
+              <p className="text-xs mt-1">
+                © 2023–2025 ACME, Inc. All rights reserved.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex space-x-12 text-sm">
+            <div className="flex flex-col space-y-2">
+              <p className="font-semibold text-white">Home</p>
+              <Link href="#">About</Link>
+              <Link href="#">Terms & Conditions</Link>
+              <Link href="#">Shipping & Returns</Link>
+              <Link href="#">Privacy Policy</Link>
+              <Link href="#">FAQ</Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center text-xs text-neutral-600 mt-6">
+          Created by ▲ Vercel
+        </div>
       </footer>
     </div>
   );
 }
+
